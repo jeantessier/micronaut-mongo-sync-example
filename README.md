@@ -1,22 +1,25 @@
-## Micronaut 3.1.3 Documentation
+# Micronaut `mongo-sync` Example
 
-- [User Guide](https://docs.micronaut.io/3.1.3/guide/index.html)
-- [API Reference](https://docs.micronaut.io/3.1.3/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/3.1.3/guide/configurationreference.html)
-- [Micronaut Guides](https://guides.micronaut.io/index.html)
----
+A sample Micronaut app that uses MongoDB and the `mongo-sync` plugin.
 
-## Feature testcontainers documentation
+Based on [this guide](https://guides.micronaut.io/latest/micronaut-mongodb-synchronous-gradle-java.html).
 
-- [https://www.testcontainers.org/](https://www.testcontainers.org/)
+## To Run
 
-## Feature http-client documentation
+```bash
+./gradlew run
+```
 
-- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
+## Sample Calls
 
-## Feature mongo-sync documentation
+To create an entity:
 
-- [Micronaut MongoDB Synchronous Driver documentation](https://micronaut-projects.github.io/micronaut-mongodb/latest/guide/index.html)
+```bash
+http :8080/fruits name=Pear
+```
 
-- [https://docs.mongodb.com](https://docs.mongodb.com)
+To list all entities:
 
+```bash
+http :8080/fruits
+```
