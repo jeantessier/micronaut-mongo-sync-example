@@ -3,4 +3,4 @@ defaultPackage: micronaut.mongo.sync.example
 testFramework: spock
 sourceLanguage: groovy
 buildTool: gradle
-features: [annotation-api, app-name, gradle, groovy, groovy-application, http-client, logback, mongo-sync, netty-server, readme, shade, spock, testcontainers, yaml]
+features: [annotation-api, app-name, gradle, groovy, groovy-application, http-client, jackson-databind, logback, mongo-sync, netty-server, readme, shade, spock, testcontainers, yaml]
