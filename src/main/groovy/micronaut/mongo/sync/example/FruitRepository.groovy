@@ -2,8 +2,8 @@ package micronaut.mongo.sync.example
 
 import io.micronaut.core.annotation.NonNull
 
-import javax.validation.Valid
-import javax.validation.constraints.NotNull
+import jakarta.validation.Valid
+import jakarta.validation.constraints.NotNull
 
 interface FruitRepository {
     @NotNull

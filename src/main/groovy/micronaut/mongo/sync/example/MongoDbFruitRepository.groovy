@@ -4,8 +4,8 @@ import com.mongodb.client.MongoClient
 import io.micronaut.core.annotation.NonNull
 import jakarta.inject.Singleton
 
-import javax.validation.Valid
-import javax.validation.constraints.NotNull
+import jakarta.validation.Valid
+import jakarta.validation.constraints.NotNull
 
 @Singleton
 class MongoDbFruitRepository implements FruitRepository {

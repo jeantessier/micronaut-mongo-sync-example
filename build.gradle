@@ -1,8 +1,9 @@
 plugins {
-    id("groovy")
-    id("com.github.johnrengelman.shadow") version "7.1.2"
-    id("io.micronaut.application") version "3.7.9"
-    id("io.micronaut.test-resources") version "3.6.2"
+    id("groovy") 
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("io.micronaut.application") version "4.0.2"
+    id("io.micronaut.test-resources") version "4.0.2"
+    id("io.micronaut.aot") version "4.0.2"
 }
 
 version = "0.1"
@@ -13,15 +14,12 @@ repositories {
 }
 
 dependencies {
-    implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut.groovy:micronaut-runtime-groovy")
     implementation("io.micronaut.mongodb:micronaut-mongo-sync")
-    implementation("jakarta.annotation:jakarta.annotation-api")
-    compileOnly("io.micronaut:micronaut-http-validation")
+    implementation("io.micronaut.serde:micronaut-serde-jackson")
+    compileOnly("io.micronaut.serde:micronaut-serde-processor")
     runtimeOnly("ch.qos.logback:logback-classic")
-    testImplementation("org.testcontainers:mongodb")
-    testImplementation("org.testcontainers:spock")
-    testImplementation("org.testcontainers:testcontainers")
+    testImplementation("io.micronaut:micronaut-http-client")
 }
 
 
@@ -29,8 +27,8 @@ application {
     mainClass.set("micronaut.mongo.sync.example.Application")
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("11")
-    targetCompatibility = JavaVersion.toVersion("11")
+    sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
 }
 
 graalvmNative.toolchainDetection = false
@@ -40,5 +38,16 @@ micronaut {
     processing {
         incremental(true)
         annotations("micronaut.mongo.sync.example.*")
+    }
+    aot {
+    // Please review carefully the optimizations enabled below
+    // Check https://micronaut-projects.github.io/micronaut-aot/latest/guide/ for more details
+        optimizeServiceLoading = false
+        convertYamlToJava = false
+        precomputeOperations = true
+        cacheEnvironment = true
+        optimizeClassLoading = true
+        deduceEnvironment = true
+        optimizeNetty = true
     }
 }
